@@ -1,98 +1,838 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Swift Capital Portal</title>
-  <meta name="description" content="Access your Swift Capital account — click below to open the official portal." />
-  <style>
-    :root {
-      --brand: #009688;
-      --brand-dark: #00796b;
-      --bg: #f4f7f9;
-      --text: #222;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: "Inter", system-ui, -apple-system, Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-    }
-    .card {
-      background: #fff;
-      padding: 2.5rem 2rem;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-      max-width: 420px;
-      width: 100%;
-      text-align: center;
-      animation: fadeIn 0.8s ease both;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .logo {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 0 auto 1rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    h1 {
-      font-size: 1.6rem;
-      color: var(--brand);
-      margin: 0.5rem 0 1rem;
-    }
-    p {
-      color: #555;
-      font-size: 1rem;
-      margin-bottom: 2rem;
-      line-height: 1.5;
-    }
-    a.button {
-      display: inline-block;
-      background: var(--brand);
-      color: #fff;
-      padding: 0.9rem 2rem;
-      border-radius: 10px;
-      font-size: 1.05rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.3s, transform 0.2s;
-    }
-    a.button:hover {
-      background: var(--brand-dark);
-      transform: translateY(-2px);
-    }
-    footer {
-      margin-top: 2rem;
-      font-size: 0.8rem;
-      color: #888;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Domnic - Medical Fund</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .story-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.05);
+        }
+
+        .story-content h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .story-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+            font-size: 1.05rem;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+
+        .donation-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .donation-section h2 {
+            color: #667eea;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .donation-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .amount-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .amount-btn {
+            padding: 15px 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .amount-btn:hover,
+        .amount-btn.active {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .custom-amount {
+            margin-bottom: 25px;
+        }
+
+        .custom-amount label,
+        .phone-input label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .custom-amount input,
+        .phone-input input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .custom-amount input:focus,
+        .phone-input input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .phone-input {
+            margin-bottom: 25px;
+        }
+
+        .phone-input small {
+            display: block;
+            margin-top: 5px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .donate-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(17, 153, 142, 0.3);
+        }
+
+        .donate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(17, 153, 142, 0.4);
+        }
+
+        .donate-btn:active {
+            transform: translateY(0);
+        }
+
+        .donate-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .alternative-payment {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .alternative-payment p {
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .mpesa-number {
+            font-size: 1.5rem;
+            color: #11998e;
+            margin: 10px 0;
+        }
+
+        .alternative-payment small {
+            color: #999;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .location {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .popup-overlay.active {
+            display: flex;
+        }
+
+        .popup {
+            background: white;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s ease;
+        }
+
+        .popup-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .popup-icon.success {
+            background: #d4edda;
+            color: #28a745;
+        }
+
+        .popup-icon.success::before {
+            content: '✓';
+        }
+
+        .popup-icon.error {
+            background: #f8d7da;
+            color: #dc3545;
+        }
+
+        .popup-icon.error::before {
+            content: '✕';
+        }
+
+        .popup-icon.pending {
+            background: #fff3cd;
+            color: #ffc107;
+        }
+
+        .popup-icon.pending::before {
+            content: '⏱';
+        }
+
+        .popup-content {
+            text-align: center;
+        }
+
+        .popup-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .popup-content p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .receipt-details {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .receipt-details p {
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .receipt-details strong {
+            color: #667eea;
+        }
+
+        .close-popup-btn {
+            padding: 15px 40px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-popup-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #38ef7d;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        .loading-overlay p {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .loading-overlay small {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .story-section,
+            .donation-section {
+                padding: 25px;
+            }
+
+            .story-content h2,
+            .donation-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .story-content p {
+                font-size: 1rem;
+            }
+
+            .amount-buttons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .amount-btn {
+                font-size: 1rem;
+                padding: 12px 15px;
+            }
+
+            .donate-btn {
+                font-size: 1.1rem;
+                padding: 15px;
+            }
+
+            .popup {
+                padding: 30px 20px;
+            }
+
+            .popup-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .gallery-img {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            header {
+                padding: 25px 15px;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .amount-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-img {
+                height: 200px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="card">
-    <!-- ✅ Use your PNG logo here -->
-    <img src="Swift logo.png" alt="Swift Capital Logo" class="logo">
-    
-    <h1>Swift Capital Portal</h1>
-    <p>Access your Swift Capital dashboard securely.  
-       Click the button below to open the official portal.</p>
+    <div class="container">
+        <header>
+            <h1>Help Domnic Fight Eye Cancer</h1>
+            <p class="subtitle">Every contribution brings hope to a child in need</p>
+        </header>
 
-    <a class="button" href="https://swiftcapitalportal.onrender.com" target="_blank" rel="noopener noreferrer">
-      Continue to Portal
-    </a>
-
-    <footer>© 2025 Swift Capital. All rights reserved.</footer>
+        <section class="story-section">
+  <div class="photo-gallery">
+    <img src="Dominic/visitor.png" alt="Rodah and Dominic with visitor" class="gallery-img">
+    <img src="visitor.png" alt="Dominic" class="gallery-img">
   </div>
+</section>
+
+            <div class="story-content">
+                <h2>Domnic's Story</h2>
+                <p>In Nairobi county, in Kibera, we meet <strong>Rodah Malakwen</strong>, a single mother of three kids. The boy, <strong>Domnic</strong>, is suffering from the condition of body swelling and eye cancer. The swelling started in his head, and it spread to his chest, eye and then to his left hand. The swelling has also affected his spinal cord.</p>
+                
+                <p>The family took her as a bad omen in the family, and they had to advise their son to marry another woman who would have healthy kids. Now she had to depart with her husband because of this sick boy, and she went back home to her parents with the kids.</p>
+                
+                <p>After her mother died, she came to Kibera with her kids to look for a job she could do to cater for them. Rodah leaves the sick son inside the house and goes for a little hustle, but now she also can't do a difficult job because she's got some health condition. Now this becomes a challenge because sometimes she lacks the strength to go to work and they are forced to sleep hungry.</p>
+                
+                <p>Rodah has other kids who look up to her for their school fees and food. She has not paid her rent for 5 months now, and the landlord kicked her out with her kids until she paid the rent.</p>
+                
+                <p>Domnic is forced to stay home because of his condition. Some people see Rodah as an outcast because of having given birth to such a kid. The kid can't socialize with other kids as others do. They insult him because of how he looks. This has affected his self-esteem, and he opts to stay indoors rather than go outside. He feels bad because of the hurtful words he hears from people.</p>
+                
+                <p>Sometimes he feels pain, and he gets sleepless nights due to the pain. Rodah lacks even a little money to buy some painkillers for him. Due to a lack of funds, Rodah is unable to take the boy to get proper treatment.</p>
+                
+                <p class="highlight">It's quite sad that not once or twice, Rodah tried to commit suicide together with her kids. It reached a point where she lost hope of things getting better and that's why she felt the need to commit suicide.</p>
+                
+                <p><strong>Your contribution can give Domnic and his family a chance at a better life.</strong></p>
+            </div>
+        </section>
+
+        <section class="donation-section">
+            <h2>Make a Contribution</h2>
+            <p class="donation-subtitle">Choose an amount or enter a custom amount</p>
+            
+            <div class="donation-form">
+                <div class="amount-buttons">
+                    <button class="amount-btn" data-amount="50">KSh 50</button>
+                    <button class="amount-btn" data-amount="100">KSh 100</button>
+                    <button class="amount-btn" data-amount="200">KSh 200</button>
+                    <button class="amount-btn" data-amount="500">KSh 500</button>
+                    <button class="amount-btn" data-amount="1000">KSh 1,000</button>
+                    <button class="amount-btn" data-amount="2000">KSh 2,000</button>
+                </div>
+
+                <div class="custom-amount">
+                    <label for="custom-amount-input">Or enter custom amount (KSh)</label>
+                    <input type="number" id="custom-amount-input" placeholder="Enter amount" min="1">
+                </div>
+
+                <div class="phone-input">
+                    <label for="phone-number">M-Pesa Phone Number</label>
+                    <input type="tel" id="phone-number" placeholder="e.g., 0712345678" required>
+                    <small>Enter your Safaricom number to receive payment prompt</small>
+                </div>
+
+                <button id="donate-btn" class="donate-btn">Donate via M-Pesa</button>
+
+                <div class="alternative-payment">
+                    <p>If STK Push doesn't work, send directly to:</p>
+                    <div class="mpesa-number">
+                        <strong>0769607491</strong> (Rodah Malakwen)
+                    </div>
+                    <small>Use Paybill or Send Money</small>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Every contribution counts. Thank you for your kindness and generosity.</p>
+            <p class="location">Kibera, Nairobi County, Kenya</p>
+        </footer>
+    </div>
+
+    <div id="popup-overlay" class="popup-overlay">
+        <div class="popup">
+            <div class="popup-content">
+                <div class="popup-icon" id="popup-icon"></div>
+                <h3 id="popup-title"></h3>
+                <p id="popup-message"></p>
+                <div id="receipt-details" class="receipt-details"></div>
+                <button id="close-popup" class="close-popup-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>Processing your donation...</p>
+        <small>Please check your phone for M-Pesa prompt</small>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'https://swiftcapitalportal.onrender.com';
+
+        let selectedAmount = 0;
+
+        const amountButtons = document.querySelectorAll('.amount-btn');
+        const customAmountInput = document.getElementById('custom-amount-input');
+        const phoneNumberInput = document.getElementById('phone-number');
+        const donateBtn = document.getElementById('donate-btn');
+        const popupOverlay = document.getElementById('popup-overlay');
+        const loadingOverlay = document.getElementById('loading-overlay');
+        const closePopupBtn = document.getElementById('close-popup');
+
+        amountButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                amountButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                selectedAmount = parseInt(button.dataset.amount);
+                customAmountInput.value = '';
+            });
+        });
+
+        customAmountInput.addEventListener('input', () => {
+            amountButtons.forEach(btn => btn.classList.remove('active'));
+            selectedAmount = parseInt(customAmountInput.value) || 0;
+        });
+
+        donateBtn.addEventListener('click', async () => {
+            const phoneNumber = phoneNumberInput.value.trim();
+            const amount = selectedAmount;
+
+            if (!phoneNumber) {
+                showPopup('error', 'Phone Number Required', 'Please enter your M-Pesa phone number.');
+                return;
+            }
+
+            if (!amount || amount < 1) {
+                showPopup('error', 'Amount Required', 'Please select or enter a donation amount.');
+                return;
+            }
+
+            if (!validatePhoneNumber(phoneNumber)) {
+                showPopup('error', 'Invalid Phone Number', 'Please enter a valid Kenyan phone number (e.g., 0712345678 or 254712345678).');
+                return;
+            }
+
+            await initiatePayment(phoneNumber, amount);
+        });
+
+        function validatePhoneNumber(phone) {
+            const cleanPhone = phone.replace(/\s/g, '');
+            const kenyanPhoneRegex = /^(254|0)([71])\d{8}$/;
+            return kenyanPhoneRegex.test(cleanPhone);
+        }
+
+        function formatPhoneNumber(phone) {
+            let cleanPhone = phone.replace(/\s/g, '');
+            
+            if (cleanPhone.startsWith('0')) {
+                cleanPhone = '254' + cleanPhone.substring(1);
+            }
+            
+            if (cleanPhone.startsWith('+254')) {
+                cleanPhone = cleanPhone.substring(1);
+            }
+            
+            if (cleanPhone.startsWith('254')) {
+                return cleanPhone;
+            }
+            
+            return '254' + cleanPhone;
+        }
+
+        async function initiatePayment(phoneNumber, amount) {
+            const formattedPhone = formatPhoneNumber(phoneNumber);
+            
+            showLoading(true);
+            donateBtn.disabled = true;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/stk-push`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        phone: formattedPhone,
+                        amount: amount,
+                        accountReference: 'Domnic Medical Fund',
+                        transactionDesc: `Donation for Domnic - KSh ${amount}`
+                    })
+                });
+
+                const data = await response.json();
+                
+                showLoading(false);
+                donateBtn.disabled = false;
+
+                if (response.ok && data.ResponseCode === '0') {
+                    showPopup(
+                        'pending',
+                        'Payment Request Sent!',
+                        'Please check your phone and enter your M-Pesa PIN to complete the donation.',
+                        {
+                            'Amount': `KSh ${amount.toLocaleString()}`,
+                            'Phone Number': formattedPhone,
+                            'Reference': data.MerchantRequestID || 'N/A'
+                        }
+                    );
+
+                    pollPaymentStatus(data.CheckoutRequestID, formattedPhone, amount);
+                } else {
+                    showPopup(
+                        'error',
+                        'Payment Failed',
+                        data.ResponseDescription || data.errorMessage || 'Unable to process payment. Please try again or send directly to 0769607491.'
+                    );
+                }
+            } catch (error) {
+                showLoading(false);
+                donateBtn.disabled = false;
+                
+                console.error('Payment error:', error);
+                showPopup(
+                    'error',
+                    'Connection Error',
+                    'Unable to connect to payment server. Please try again later or send directly to M-Pesa number 0769607491 (Rodah).'
+                );
+            }
+        }
+
+        async function pollPaymentStatus(checkoutRequestID, phoneNumber, amount) {
+            if (!checkoutRequestID) return;
+
+            const maxAttempts = 20;
+            let attempts = 0;
+            
+            const pollInterval = setInterval(async () => {
+                attempts++;
+                
+                try {
+                    const response = await fetch(`${API_BASE_URL}/api/payment-status/${checkoutRequestID}`);
+                    const data = await response.json();
+                    
+                    if (data.status === 'completed') {
+                        clearInterval(pollInterval);
+                        showPopup(
+                            'success',
+                            'Thank You for Your Donation!',
+                            'Your payment has been received successfully. May God bless you for your kindness.',
+                            {
+                                'Amount': `KSh ${amount.toLocaleString()}`,
+                                'Phone Number': phoneNumber,
+                                'M-Pesa Receipt': data.mpesaReceiptNumber || 'Processing',
+                                'Transaction Date': new Date().toLocaleString()
+                            }
+                        );
+                        
+                        resetForm();
+                    } else if (data.status === 'failed' || data.status === 'cancelled') {
+                        clearInterval(pollInterval);
+                        showPopup(
+                            'error',
+                            'Payment Not Completed',
+                            data.message || 'Payment was not completed. Please try again or send directly to 0769607491.'
+                        );
+                    }
+                    
+                    if (attempts >= maxAttempts) {
+                        clearInterval(pollInterval);
+                    }
+                } catch (error) {
+                    console.error('Status check error:', error);
+                    if (attempts >= maxAttempts) {
+                        clearInterval(pollInterval);
+                    }
+                }
+            }, 3000);
+        }
+
+        function showPopup(type, title, message, receiptData = null) {
+            const popupIcon = document.getElementById('popup-icon');
+            const popupTitle = document.getElementById('popup-title');
+            const popupMessage = document.getElementById('popup-message');
+            const receiptDetails = document.getElementById('receipt-details');
+
+            popupIcon.className = `popup-icon ${type}`;
+            popupTitle.textContent = title;
+            popupMessage.textContent = message;
+
+            if (receiptData) {
+                let receiptHTML = '<h4 style="margin-bottom: 15px; color: #667eea;">Receipt Details</h4>';
+                for (const [key, value] of Object.entries(receiptData)) {
+                    receiptHTML += `<p><strong>${key}:</strong> ${value}</p>`;
+                }
+                receiptDetails.innerHTML = receiptHTML;
+                receiptDetails.style.display = 'block';
+            } else {
+                receiptDetails.style.display = 'none';
+            }
+
+            popupOverlay.classList.add('active');
+        }
+
+        function showLoading(show) {
+            if (show) {
+                loadingOverlay.classList.add('active');
+            } else {
+                loadingOverlay.classList.remove('active');
+            }
+        }
+
+        function resetForm() {
+            amountButtons.forEach(btn => btn.classList.remove('active'));
+            customAmountInput.value = '';
+            phoneNumberInput.value = '';
+            selectedAmount = 0;
+        }
+
+        closePopupBtn.addEventListener('click', () => {
+            popupOverlay.classList.remove('active');
+        });
+
+        popupOverlay.addEventListener('click', (e) => {
+            if (e.target === popupOverlay) {
+                popupOverlay.classList.remove('active');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Donation page loaded successfully');
+        });
+    </script>
 </body>
-  </html>
+</html>
